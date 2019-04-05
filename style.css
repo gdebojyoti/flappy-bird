@@ -156,6 +156,26 @@ body {
   background-color: #f1c40f;
   border-radius: 2px;
 }
+.go__share {
+  display: flex;
+  margin: 30px auto 0 auto;
+}
+.go__share-text {
+  line-height: 30px;
+}
+.social-icon {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: center / contain no-repeat;
+}
+.social-icon--whatsapp {
+  background-image: url('whatsapp.png')
+}
+.social-icon--facebook {
+  background-image: url('facebook.png')
+}
 
 /* Instructions for user */
 .how-to {

@@ -52,6 +52,8 @@ const addEvents = () => {
 
   document.getElementById('pause').addEventListener('mousedown', togglePause)
   document.getElementById('retry').addEventListener('click', onRetry)
+  document.getElementById('share-whatsapp').addEventListener('click', shareOnWhatsApp)
+  document.getElementById('share-facebook').addEventListener('click', shareOnFacebook)
 }
 
 const onKeyDown = ({ key }) => {
@@ -133,6 +135,14 @@ const onRetry = () => {
 
   // NOTE: Temporary solution (reload to restart game); re-initialize game settings to avoid page reload
   window.location.reload()
+}
+
+const shareOnWhatsApp = () => {
+  window.open(`whatsapp://send?text=I just scored ${nextPipeId - 1} on Flappy Bird. Beat my score! http://flappy.debojyotighosh.com`)
+}
+
+const shareOnFacebook = () => {
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=http://flappy.debojyotighosh.com&quote=I just scored ${nextPipeId - 1} on Flappy Bird. Beat my score!`, 'Test title', 'width=420,height=230')
 }
 
 // calculate height at which next gap should be created
