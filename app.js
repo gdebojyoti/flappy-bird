@@ -1,5 +1,6 @@
 const requestAnimationFrame = window.requestAnimationFrame
 
+let hasGameStarted = false
 let isGameRunning = false
 let isGameOver = false
 let isKeyCurrentlyPressed = false
@@ -61,8 +62,7 @@ const onKeyDown = ({ key }) => {
 
   switch (key) {
     case ' ': {
-      isGameRunning = true
-      birdVerticalSpeed = -jumpForceFactor
+      runGame()
       isKeyCurrentlyPressed = true
       break
     }
@@ -77,13 +77,46 @@ const onKeyUp = e => {
 }
 
 const onClick = e => {
-  isGameRunning = true
+  runGame()
+}
+
+const runGame = () => {
+  if (!isGameRunning && !isGameOver) {
+    // remove 'Paused!' text on tap (except on first tap - which was to start game
+    // both tap and 'space' work the same way
+    togglePauseText()
+  }
+
+  if (!hasGameStarted) {
+    hasGameStarted = true
+  }
+
+  if (!isGameRunning) {
+    isGameRunning = true
+  }
+
   birdVerticalSpeed = -jumpForceFactor
 }
 
 const togglePause = e => {
+  // ignore if game hasn't started
+  if (!hasGameStarted) {
+    return
+  }
+
   e && e.stopPropagation()
   isGameRunning = !isGameRunning
+
+  togglePauseText()
+}
+
+const togglePauseText = () => {
+  const element = document.getElementById('how-to')
+  if (!element) {
+    return
+  }
+
+  element.innerHTML = isGameRunning ? '' : 'Paused!'
 }
 
 const onRetry = () => {
