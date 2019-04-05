@@ -1,5 +1,4 @@
 Update UI
-Share score
 ℹ️ 'i' for developer details
 Use local storage to save data instead of cookies
 
