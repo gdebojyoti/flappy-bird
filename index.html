@@ -1,0 +1,47 @@
+<!doctype html>
+
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1, width=device-width">
+    <meta charset="UTF-8">
+    <meta name="description" content="A simple Flappy Bird clone - made using HTML, CSS, JS. No canvas. No libraries. 1 GIF. Work in Progress">
+    <title>Flappy Bird</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <button id="pause" class="pause">❚❚</button>
+    <div id="score" class="score">0</div>
+    
+    <section id="arena" class="arena">
+      <div id="bird" class="bird"></div>
+      
+      <div id="asphalt" class="asphalt"></div>
+      
+      <div id="ground" class="ground">
+        <!-- <div id="pipe" class="pipe">
+          <div class="pipe__upper"></div>
+          <div class="pipe__lower"></div>
+        </div> -->
+      </div>
+    </section>
+
+    <section id="game-over" class="game-over">
+      <div class="go__board">
+        <h2 class="go__heading">Awwww!</h2>
+        
+        <div class="go__score go__score--top">Your Score:
+          <span id="go-board-score" class="go__score-number"></span>
+        </div>
+        <div class="go__score">Your High Score:
+          <span id="go-board-highscore" class="go__score-number"></span>
+        </div>
+        
+        <button class="go__cta" onClick='window.location.reload()'>Try again?</button>
+      </div>
+    </section>
+
+    <section id="how-to" class="how-to">Tap, Tap to Flap</section>
+
+    <script src="app.js"></script>
+  </body>
+</html>
