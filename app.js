@@ -63,6 +63,10 @@ const onKeyDown = ({ key }) => {
       isGameRunning = true
       birdVerticalSpeed = -jumpForceFactor
       isKeyCurrentlyPressed = true
+      break
+    }
+    case 'Escape': {
+      togglePause()
     }
   }
 }
@@ -77,7 +81,7 @@ const onClick = e => {
 }
 
 const togglePause = e => {
-  e.stopPropagation()
+  e && e.stopPropagation()
   isGameRunning = !isGameRunning
 }
 
