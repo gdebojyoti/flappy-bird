@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="A simple Flappy Bird clone - made using HTML, CSS, JS. No canvas. No libraries. 1 GIF. Work in Progress">
     <title>Flappy Bird</title>
-    <link rel="stylesheet" href="style.css?v=1">
+    <link rel="stylesheet" href="style.css?v=2">
 
     <!-- Google Analytics -->
     <script>
@@ -21,7 +21,9 @@
     <!-- End Google Analytics -->
   </head>
   <body>
-    <button id="pause" class="pause">❚❚</button>
+    <button id="pause" class="btn">❚❚</button>
+    <button id="info" class="btn btn--info">ℹ️</button>
+
     <div id="score" class="score">0</div>
     
     <section id="arena" class="arena">
@@ -34,6 +36,18 @@
           <div class="pipe__upper"></div>
           <div class="pipe__lower"></div>
         </div> -->
+      </div>
+    </section>
+
+    <section id="info-panel" class="game-over info-panel">
+      <div class="go__board">
+        <div class="info-panel__text">
+          Developed by
+          <br>
+          <strong>Debojyoti Ghosh</strong>
+        </div>
+
+        <button id="info-close" class="go__cta">Back</button>
       </div>
     </section>
 
@@ -60,6 +74,6 @@
 
     <section id="how-to" class="how-to">Tap, Tap to Flap</section>
 
-    <script src="app.js?v=4"></script>
+    <script src="app.js?v=6"></script>
   </body>
 </html>

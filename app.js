@@ -51,6 +51,8 @@ const addEvents = () => {
   document.addEventListener('mousedown', onClick)
 
   document.getElementById('pause').addEventListener('mousedown', togglePause)
+  document.getElementById('info').addEventListener('mousedown', toggleInfoPanel)
+  document.getElementById('info-close').addEventListener('mousedown', e => toggleInfoPanel(e, true))
   document.getElementById('retry').addEventListener('click', onRetry)
   document.getElementById('share-whatsapp').addEventListener('click', shareOnWhatsApp)
   document.getElementById('share-facebook').addEventListener('click', shareOnFacebook)
@@ -120,6 +122,19 @@ const togglePauseText = () => {
   }
 
   element.innerHTML = isGameRunning ? '' : 'Paused!'
+}
+
+const toggleInfoPanel = (e, shouldClose) => {
+  e && e.stopPropagation()
+  document.getElementById('info-panel').style.display = shouldClose ? 'none' : 'flex'
+
+  // if game is currently running, pause
+  isGameRunning && togglePause()
+
+  !shouldClose && window.ga && window.ga('send', 'event', {
+    eventCategory: 'info_popup',
+    eventAction: 'click'
+  })
 }
 
 const onRetry = () => {
