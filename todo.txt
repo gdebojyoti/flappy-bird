@@ -1,7 +1,6 @@
 Update UI
 'Pause' text
 Share score
-Better UX for Retry button
 ℹ️ 'i' for developer details
 Use local storage to save data instead of cookies
 

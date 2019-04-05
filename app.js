@@ -50,6 +50,7 @@ const addEvents = () => {
   document.addEventListener('mousedown', onClick)
 
   document.getElementById('pause').addEventListener('mousedown', togglePause)
+  document.getElementById('retry').addEventListener('click', onRetry)
 }
 
 const onKeyDown = ({ key }) => {
@@ -83,6 +84,22 @@ const onClick = e => {
 const togglePause = e => {
   e && e.stopPropagation()
   isGameRunning = !isGameRunning
+}
+
+const onRetry = () => {
+  const retryElement = document.getElementById('retry')
+
+  // exit if button does not exist
+  if (!retryElement) {
+    return
+  }
+
+  // update button text & prevent further clicks
+  retryElement.innerHTML = 'Loading...'
+  retryElement.style.pointerEvents = 'none'
+
+  // NOTE: Temporary solution (reload to restart game); re-initialize game settings to avoid page reload
+  window.location.reload()
 }
 
 // calculate height at which next gap should be created
