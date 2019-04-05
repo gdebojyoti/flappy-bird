@@ -83,7 +83,7 @@ const onClick = e => {
 }
 
 const runGame = () => {
-  if (!isGameRunning && !isGameOver) {
+  if (!hasGameStarted && !isGameRunning && !isGameOver) {
     // remove 'Paused!' text on tap (except on first tap - which was to start game
     // both tap and 'space' work the same way
     isGameRunning = true
@@ -92,7 +92,7 @@ const runGame = () => {
   }
 
   if (!isGameRunning) {
-    isGameRunning = true
+    togglePause()
   }
 
   birdVerticalSpeed = -jumpForceFactor
@@ -101,12 +101,14 @@ const runGame = () => {
 const togglePause = e => {
   e && e.stopPropagation()
 
-  // ignore if game hasn't started
-  if (!hasGameStarted) {
+  // ignore if game hasn't started or game is over
+  if (!hasGameStarted || isGameOver) {
     return
   }
 
   isGameRunning = !isGameRunning
+
+  document.getElementById('pause').innerHTML = isGameRunning ? '❚❚' : '▶'
 
   togglePauseText()
 }
