@@ -86,11 +86,9 @@ const runGame = () => {
   if (!isGameRunning && !isGameOver) {
     // remove 'Paused!' text on tap (except on first tap - which was to start game
     // both tap and 'space' work the same way
-    togglePauseText()
-  }
-
-  if (!hasGameStarted) {
+    isGameRunning = true
     hasGameStarted = true
+    togglePauseText()
   }
 
   if (!isGameRunning) {
@@ -101,12 +99,13 @@ const runGame = () => {
 }
 
 const togglePause = e => {
+  e && e.stopPropagation()
+
   // ignore if game hasn't started
   if (!hasGameStarted) {
     return
   }
 
-  e && e.stopPropagation()
   isGameRunning = !isGameRunning
 
   togglePauseText()
@@ -138,11 +137,11 @@ const onRetry = () => {
 }
 
 const shareOnWhatsApp = () => {
-  window.open(`whatsapp://send?text=I just scored ${nextPipeId - 1} on Flappy Bird. Beat my score! http://flappy.debojyotighosh.com`)
+  window.open(`whatsapp://send?text=I just scored ${nextPipeId - 1} on Flappy Bird. Can you beat my score? http://flappy.debojyotighosh.com`)
 }
 
 const shareOnFacebook = () => {
-  window.open(`https://www.facebook.com/sharer/sharer.php?u=http://flappy.debojyotighosh.com&quote=I just scored ${nextPipeId - 1} on Flappy Bird. Beat my score!`, 'Test title', 'width=420,height=230')
+  window.open(`https://www.facebook.com/sharer/sharer.php?u=http://flappy.debojyotighosh.com&quote=I just scored ${nextPipeId - 1} on Flappy Bird. Can you beat my score?`, 'Test title', 'width=420,height=230')
 }
 
 // calculate height at which next gap should be created
