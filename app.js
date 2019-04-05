@@ -134,19 +134,35 @@ const onRetry = () => {
   retryElement.innerHTML = 'Loading...'
   retryElement.style.pointerEvents = 'none'
 
-  window.ga && window.ga('send', 'event', 'retry', 'click')
+  window.ga && window.ga('send', 'event', {
+    eventCategory: 'retry',
+    eventAction: 'click',
+    transport: 'beacon'
+  })
 
   // NOTE: Temporary solution (reload to restart game); re-initialize game settings to avoid page reload
   window.location.reload()
 }
 
 const shareOnWhatsApp = () => {
-  window.ga && window.ga('send', 'event', 'sharing', 'share', '', 'whatsapp')
+  window.ga && window.ga('send', 'event', {
+    eventCategory: 'sharing',
+    eventAction: 'click',
+    eventLabel: 'whatsapp',
+    transport: 'beacon'
+  })
+
   window.open(`whatsapp://send?text=I just scored ${nextPipeId - 1} on Flappy Bird. Can you beat my score? http://flappy.debojyotighosh.com`)
 }
 
 const shareOnFacebook = () => {
-  window.ga && window.ga('send', 'event', 'sharing', 'share', '', 'facebook')
+  window.ga && window.ga('send', 'event', {
+    eventCategory: 'sharing',
+    eventAction: 'click',
+    eventLabel: 'facebook',
+    transport: 'beacon'
+  })
+
   window.open(`https://www.facebook.com/sharer/sharer.php?u=http://flappy.debojyotighosh.com&quote=I just scored ${nextPipeId - 1} on Flappy Bird. Can you beat my score?`, 'Test title', 'width=420,height=230')
 }
 
