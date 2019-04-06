@@ -5,6 +5,8 @@ let isGameRunning = false
 let isGameOver = false
 let isKeyCurrentlyPressed = false
 
+const arenaHeight = Math.max(window.innerHeight * 0.7, 300)
+
 let scoreDomElm = null
 
 let asphaltDomElm = null
@@ -29,14 +31,16 @@ let pipeIdToBeDeleted = pipeCount
 const pipeGapHeight = 90 // gap between upper & lower pipes
 let currentGapLevel = 80 // lower-most point of upper pipe; i.e. upper-most point of gap
 const gapDifference = 100 // maximum difference between consecutive gap levels
-const safeZonePadding = 50 // safe zone - where no gaps will exist
+
+// safe zones - where no gaps will exist
+const safeZonePaddingTop = arenaHeight > 450 ? 100 : 50
+const safeZonePaddingBottom = 50
 
 let nextPipeId = 1 // ID of pipe that is to be crossed next
 
 const visibleWidth = window.innerWidth + 2 * (pipeWidth + pipeSpacing) // width across which pipes are visible
-const arenaHeight = Math.min(window.innerHeight, 300)
-const maxAllowedHeight = window.innerHeight / 2 - 150
-const maxAllowedDepth = window.innerHeight / 2 + 150
+const maxAllowedHeight = 0 // limit to which bird can fly upwards without colliding with ceiling
+const maxAllowedDepth = arenaHeight // limit to which bird can fly downwards without colliding with ground
 
 const initialize = () => {
   asphaltDomElm = document.getElementById('asphalt')
@@ -186,12 +190,12 @@ const getNextGapLevel = () => {
   const randomDifference = Math.round(Math.random() * 2 * gapDifference - gapDifference)
   let tentativeLevel = currentGapLevel + randomDifference
 
-  if (tentativeLevel <= safeZonePadding) {
+  if (tentativeLevel <= safeZonePaddingTop) {
     // too high
-    return safeZonePadding
-  } else if ((tentativeLevel + pipeGapHeight) > (arenaHeight - safeZonePadding)) {
+    return safeZonePaddingTop
+  } else if ((tentativeLevel + pipeGapHeight) > (arenaHeight - safeZonePaddingBottom)) {
     // too low
-    return arenaHeight - pipeGapHeight - safeZonePadding
+    return arenaHeight - pipeGapHeight - safeZonePaddingBottom
   }
 
   return tentativeLevel
