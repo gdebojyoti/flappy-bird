@@ -17,7 +17,6 @@ strong {
   position: fixed;
   top: 30px;
   left: 30px;
-  z-index: 1;
   width: 40px;
   border: none;
   line-height: 40px;
@@ -34,7 +33,6 @@ strong {
   position: fixed;
   top: 30px;
   left: 50%;
-  z-index: 1;
   transform: translateX(-50%);
   font-size: 30px;
   line-height: 40px;

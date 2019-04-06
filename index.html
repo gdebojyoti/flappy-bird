@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="description" content="A simple Flappy Bird clone - made using HTML, CSS, JS. No canvas. No libraries. 1 GIF. Work in Progress">
     <title>Flappy Bird</title>
-    <link rel="stylesheet" href="style.css?v=3">
+    <link rel="stylesheet" href="style.css?v=4">
 
     <!-- Google Analytics -->
     <script>
@@ -18,14 +18,9 @@
       ga('create', 'UA-137824777-1', 'auto');
       ga('send', 'pageview');
     </script>
-    <!-- End Google Analytics -->
   </head>
   <body>
-    <button id="pause" class="btn">❚❚</button>
-    <button id="info" class="btn btn--info">ℹ️</button>
-
-    <div id="score" class="score">0</div>
-    
+    <!-- Arena (main game area) -->
     <section id="arena" class="arena">
       <div id="bird" class="bird"></div>
       
@@ -34,6 +29,14 @@
       <div id="ground" class="ground"></div>
     </section>
 
+    <!-- Pause & info buttons -->
+    <button id="pause" class="btn">❚❚</button>
+    <button id="info" class="btn btn--info">ℹ️</button>
+
+    <!-- Current score -->
+    <div id="score" class="score">0</div>
+    
+    <!-- 'Developed by' panel -->
     <section id="info-panel" class="game-over info-panel">
       <div class="go__board">
         <div class="info-panel__text">
@@ -46,6 +49,7 @@
       </div>
     </section>
 
+    <!-- 'Game over' screen -->
     <section id="game-over" class="game-over">
       <div class="go__board">
         <h2 class="go__heading">Awwww!</h2>
@@ -67,8 +71,10 @@
       </div>
     </section>
 
+    <!-- Message board ('Tap, tap..', 'Paused') -->
     <section id="how-to" class="how-to">Tap, Tap to Flap</section>
 
+    <!-- scripts -->
     <script src="app.js?v=9"></script>
     <script src="localStorage.js"></script>
   </body>
