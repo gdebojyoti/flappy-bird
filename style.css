@@ -6,6 +6,7 @@
 
 body {
   font-family: sans-serif;
+  background-color: rgba(234,181,67,.25);
 }
 
 strong {
@@ -37,7 +38,9 @@ strong {
   transform: translateX(-50%);
   font-size: 30px;
   line-height: 40px;
+  color: #fff;
   font-weight: bold;
+  text-shadow: 0 0 2px black;
 }
 
 .arena {
@@ -47,17 +50,14 @@ strong {
   width: 100%;
   height: 70%;
   min-height: 300px;
-  background-color: #f7f7f7;
+  background-color: rgba(52,152,219,.25);
 }
 
 .bird {
   position: absolute;
   top: 40%;
   left: 30%;
-  /* width: 40px;
-  height: 20px;
-  background-color: #f39c12; */
-  width: 28px;
+  width: 26px;
   height: 24px;
   background: transparent url('flappy.gif') center / 42px no-repeat;
 }
@@ -68,9 +68,7 @@ strong {
   left: 0;
   width: 10000px;
   height: 100%;
-  border: 3px dashed #795548;
-  border-left: none;
-  border-right: none;
+  border-bottom: 3px dashed #795548;
 }
 
 .ground {
@@ -90,7 +88,6 @@ strong {
   position: absolute;
   left: 0;
   width: 100%;
-  /* background-color: red; */
 }
 .pipe__upper {
   top: 0;
