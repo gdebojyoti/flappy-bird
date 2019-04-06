@@ -329,9 +329,11 @@ const triggerGameOver = () => {
   }
 
   const finalScore = nextPipeId - 1
-  const highScore = Math.max(getCurrentHighScore(), finalScore)
+  const highScore = Math.max(getFromLocalStorage('highscore') || 0, finalScore)
 
-  document.cookie = `highscore=${highScore};expires=Thu, 3 Dec 3013 12:00:00 UTC`
+  addToLocalStorage('highscore', highScore)
+
+  // document.cookie = `highscore=${highScore};expires=Thu, 3 Dec 3013 12:00:00 UTC`
 
   const scoreElm = document.getElementById('go-board-score')
   const highScoreElm = document.getElementById('go-board-highscore')
@@ -350,20 +352,6 @@ const removeInstructions = () => {
   if (element) {
     element.innerHTML = ''
   }
-}
-
-const getCurrentHighScore = () => {
-  const cookies = document.cookie.split(';') || []
-  let highScore = 0
-
-  cookies.forEach(cookie => {
-    const splitted = cookie.split('=') || []
-    if (splitted[0] === 'highscore') {
-      highScore = splitted[1]
-    }
-  })
-
-  return highScore
 }
 
 const forceBirdDown = () => {

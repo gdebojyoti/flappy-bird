@@ -1,5 +1,4 @@
 Update UI
-Use local storage to save data instead of cookies
 
 🥇 Highscores modal (name, score, date) :: add backend scripts (PHP)
 
