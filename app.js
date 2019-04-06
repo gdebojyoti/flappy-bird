@@ -156,6 +156,7 @@ const onRetry = () => {
   window.ga && window.ga('send', 'event', {
     eventCategory: 'retry',
     eventAction: 'click',
+    eventValue: nextPipeId - 1,
     transport: 'beacon'
   })
 
